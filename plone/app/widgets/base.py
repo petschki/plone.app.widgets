@@ -317,7 +317,9 @@ class TextareaWidget(BaseWidget):
         :param value: Set value of element.
         :type value: string
         """
-        self.el.text = value
+        uincode_cc = dict.fromkeys(range(32))
+        clean_value = value.translate(uincode_cc)
+        self.el.text = clean_value
 
     def _del_value(self):
         """Set empty string as value of element."""
