@@ -138,7 +138,8 @@ def get_ajaxselect_options(context, value, separator, vocabulary_name,
 
 def get_relateditems_options(context, value, separator, vocabulary_name,
                              vocabulary_view, field_name=None, widget=None):
-    options = get_ajaxselect_options(context, value, separator,
+    portal = get_portal()
+    options = get_ajaxselect_options(portal, value, separator,
                                      vocabulary_name, vocabulary_view,
                                      field_name)
     if IForm.providedBy(context):
@@ -160,6 +161,9 @@ def get_relateditems_options(context, value, separator, vocabulary_name,
     options['rootPath'] = (
         '/'.join(nav_root.getPhysicalPath()) if nav_root else '/'
     )
+
+    if getattr(widget, 'selectable_types', None):
+        options['selectableTypes'] = widget.selectable_types
 
     return options
 
@@ -319,7 +323,7 @@ def get_tinymce_options(context, field, request):
 
         button_settings['directionality'] = 'attribs' in config[
             'buttons'] and 'ltr rtl' or ''
-        
+
         # enable browser spell check by default:
         config['browser_spellcheck'] = True
 

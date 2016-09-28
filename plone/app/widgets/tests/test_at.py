@@ -363,6 +363,7 @@ class RelatedItemsWidgetTests(unittest.TestCase):
                 'value': '{};{}'.format(IUUID(obj1), IUUID(obj2)),
                 'pattern': 'relateditems',
                 'pattern_options': {
+                    'folderTypes': ['SomeType'],
                     'selectableTypes': ['SomeSelectableType', ],
                     'homeText': u'Home',
                     'searchAllText': u'Entire site',

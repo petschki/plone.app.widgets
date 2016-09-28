@@ -953,6 +953,7 @@ class RelatedItemsWidgetTests(unittest.TestCase):
                 'value': u'',
                 'pattern': 'relateditems',
                 'pattern_options': {
+                    'folderTypes': ['SomeType'],
                     'selectableTypes': ['SomeSelectableType', ],
                     'homeText': u'Home',
                     'searchAllText': u'Entire site',
